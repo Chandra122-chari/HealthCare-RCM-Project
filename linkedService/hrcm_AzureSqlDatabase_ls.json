@@ -1,0 +1,28 @@
+{
+	"name": "hrcm_AzureSqlDatabase_ls",
+	"properties": {
+		"parameters": {
+			"db_name": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "hrcmsqlserver.database.windows.net",
+			"database": "@{linkedService().db_name}",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "chandra",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "hrcm_AzureKeyVault_ls",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "azsqldb-key"
+			}
+		}
+	}
+}
