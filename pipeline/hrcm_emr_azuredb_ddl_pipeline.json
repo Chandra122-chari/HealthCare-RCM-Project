@@ -83,7 +83,15 @@
 									"referenceName": "Dynamic_AzureSqlTable",
 									"type": "DatasetReference",
 									"parameters": {
-										"db_name": "@i"
+										"db_name": {
+											"value": "@item().db_name",
+											"type": "Expression"
+										},
+										"schema": "dbo",
+										"table": {
+											"value": "@item().filename",
+											"type": "Expression"
+										}
 									}
 								}
 							]
