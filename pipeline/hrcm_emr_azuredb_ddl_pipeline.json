@@ -35,69 +35,12 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"source": {
-									"type": "DelimitedTextSource",
-									"storeSettings": {
-										"type": "AzureBlobFSReadSettings",
-										"recursive": true,
-										"enablePartitionDiscovery": false
-									},
-									"formatSettings": {
-										"type": "DelimitedTextReadSettings"
-									}
-								},
-								"sink": {
-									"type": "AzureSqlSink",
-									"writeBehavior": "insert",
-									"sqlWriterUseTableLock": false,
-									"disableMetricsCollection": false
-								},
 								"enableStaging": false,
 								"translator": {
 									"value": "@item().filename",
 									"type": "Expression"
 								}
-							},
-							"inputs": [
-								{
-									"referenceName": "Dynamic_adlsgen2_datasets",
-									"type": "DatasetReference",
-									"parameters": {
-										"root": {
-											"value": "@item().root",
-											"type": "Expression"
-										},
-										"subroot": {
-											"value": "@item().subroot",
-											"type": "Expression"
-										},
-										"filename": {
-											"value": "@concat(item().filename , '.csv')",
-											"type": "Expression"
-										}
-									}
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "Dynamic_AzureSqlTable",
-									"type": "DatasetReference",
-									"parameters": {
-										"db_name": {
-											"value": "@item().db_name",
-											"type": "Expression"
-										},
-										"schema": {
-											"value": "dbo",
-											"type": "Expression"
-										},
-										"table": {
-											"value": "@item().filename",
-											"type": "Expression"
-										}
-									}
-								}
-							]
+							}
 						}
 					]
 				}
@@ -115,21 +58,6 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
-					"dataset": {
-						"referenceName": "emr_ddl_configs_ls",
-						"type": "DatasetReference"
-					},
 					"firstRowOnly": false
 				}
 			}
