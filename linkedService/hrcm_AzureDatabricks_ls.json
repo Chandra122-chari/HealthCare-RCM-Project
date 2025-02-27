@@ -1,0 +1,19 @@
+{
+	"name": "hrcm_AzureDatabricks_ls",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-918355591549328.8.azuredatabricks.net/",
+			"accessToken": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "hrcm_AzureKeyVault_ls",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "hrcm-db-accesstoken-key"
+			},
+			"existingClusterId": "0224-074321-1cui8ejt"
+		}
+	}
+}
