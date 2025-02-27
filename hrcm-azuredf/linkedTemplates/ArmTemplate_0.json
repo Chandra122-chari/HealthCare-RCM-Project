@@ -198,144 +198,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Dynamic_AzureSqlTable1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "hrcm_AzureSqlDatabase_ls",
-					"type": "LinkedServiceReference",
-					"parameters": {
-						"db_name": {
-							"value": "@dataset().db_name",
-							"type": "Expression"
-						}
-					}
-				},
-				"parameters": {
-					"db_name": {
-						"type": "string"
-					},
-					"schema": {
-						"type": "string"
-					},
-					"table": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": {
-						"value": "@dataset().schema",
-						"type": "Expression"
-					},
-					"table": {
-						"value": "@dataset().table",
-						"type": "Expression"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/hrcm_AzureSqlDatabase_ls')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Dynamic_AzureSqlTable2')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "hrcm_AzureSqlDatabase_ls",
-					"type": "LinkedServiceReference",
-					"parameters": {
-						"db_name": {
-							"value": "@dataset().db_name",
-							"type": "Expression"
-						}
-					}
-				},
-				"parameters": {
-					"db_name": {
-						"type": "string"
-					},
-					"schema": {
-						"type": "string"
-					},
-					"table": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": {
-						"value": "@dataset().schema",
-						"type": "Expression"
-					},
-					"table": {
-						"value": "@dataset().table",
-						"type": "Expression"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/hrcm_AzureSqlDatabase_ls')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/Dynamic_adlsgen2_datasets')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "hrcm_AzureDataLakeStorage_ls",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"root": {
-						"type": "string"
-					},
-					"subroot": {
-						"type": "string"
-					},
-					"filename": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": {
-							"value": "@dataset().filename",
-							"type": "Expression"
-						},
-						"folderPath": {
-							"value": "@dataset().subroot",
-							"type": "Expression"
-						},
-						"fileSystem": {
-							"value": "@dataset().root",
-							"type": "Expression"
-						}
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/hrcm_AzureDataLakeStorage_ls')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Dynamic_adlsgen2_datasets1')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -430,52 +293,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Dynamic_adlsgen2_parquet1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "hrcm_AzureDataLakeStorage_ls",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"root": {
-						"type": "string"
-					},
-					"subroot": {
-						"type": "string"
-					},
-					"file": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": {
-							"value": "@dataset().file",
-							"type": "Expression"
-						},
-						"folderPath": {
-							"value": "@dataset().subroot",
-							"type": "Expression"
-						},
-						"fileSystem": {
-							"value": "@dataset().root",
-							"type": "Expression"
-						}
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/hrcm_AzureDataLakeStorage_ls')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/audit_DeltaLakeDataset')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -491,220 +308,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/hrcm_AzureDatabricksDeltaLake_ls')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/audit_DeltaLakeDataset1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "hrcm_AzureDatabricksDeltaLake_ls",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureDatabricksDeltaLakeDataset",
-				"typeProperties": {},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/hrcm_AzureDatabricksDeltaLake_ls')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/emr_ddl_configs_ls')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "hrcm_AzureDataLakeStorage_ls",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": "emr_ddl_configs.txt",
-						"fileSystem": "configs"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "root",
-						"type": "String"
-					},
-					{
-						"name": "subroot",
-						"type": "String"
-					},
-					{
-						"name": "filename",
-						"type": "String"
-					},
-					{
-						"name": "db_name",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/hrcm_AzureDataLakeStorage_ls')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/hrcm_emr_azuredb_ddl_pipeline')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "ForEach1",
-						"type": "ForEach",
-						"dependsOn": [
-							{
-								"activity": "Lookup1",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('Lookup1').output.value",
-								"type": "Expression"
-							},
-							"isSequential": false,
-							"batchCount": 5,
-							"activities": [
-								{
-									"name": "Copy data1",
-									"type": "Copy",
-									"dependsOn": [],
-									"policy": {
-										"timeout": "0.12:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "DelimitedTextSource",
-											"storeSettings": {
-												"type": "AzureBlobFSReadSettings",
-												"recursive": true,
-												"enablePartitionDiscovery": false
-											},
-											"formatSettings": {
-												"type": "DelimitedTextReadSettings"
-											}
-										},
-										"sink": {
-											"type": "AzureSqlSink",
-											"writeBehavior": "insert",
-											"sqlWriterUseTableLock": false,
-											"disableMetricsCollection": false
-										},
-										"enableStaging": false,
-										"translator": {
-											"value": "@item().filename",
-											"type": "Expression"
-										}
-									},
-									"inputs": [
-										{
-											"referenceName": "Dynamic_adlsgen2_datasets",
-											"type": "DatasetReference",
-											"parameters": {
-												"root": {
-													"value": "@item().root",
-													"type": "Expression"
-												},
-												"subroot": {
-													"value": "@item().subroot",
-													"type": "Expression"
-												},
-												"filename": {
-													"value": "@concat(item().filename , '.csv')",
-													"type": "Expression"
-												}
-											}
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "Dynamic_AzureSqlTable",
-											"type": "DatasetReference",
-											"parameters": {
-												"db_name": {
-													"value": "@item().db_name",
-													"type": "Expression"
-												},
-												"schema": {
-													"value": "dbo",
-													"type": "Expression"
-												},
-												"table": {
-													"value": "@item().filename",
-													"type": "Expression"
-												}
-											}
-										}
-									]
-								}
-							]
-						}
-					},
-					{
-						"name": "Lookup1",
-						"type": "Lookup",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobFSReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"dataset": {
-								"referenceName": "emr_ddl_configs_ls",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"firstRowOnly": false
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"annotations": [],
-				"lastPublishTime": "2025-02-27T07:26:57Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/emr_ddl_configs_ls')]",
-				"[concat(variables('factoryId'), '/datasets/Dynamic_adlsgen2_datasets')]",
-				"[concat(variables('factoryId'), '/datasets/Dynamic_AzureSqlTable')]"
 			]
 		},
 		{
@@ -802,7 +405,7 @@
 									},
 									"inputs": [
 										{
-											"referenceName": "Dynamic_AzureSqlTable1",
+											"referenceName": "Dynamic_AzureSqlTable",
 											"type": "DatasetReference",
 											"parameters": {
 												"db_name": {
@@ -917,7 +520,7 @@
 									},
 									"inputs": [
 										{
-											"referenceName": "Dynamic_AzureSqlTable1",
+											"referenceName": "Dynamic_AzureSqlTable",
 											"type": "DatasetReference",
 											"parameters": {
 												"db_name": {
@@ -1020,325 +623,8 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/audit_DeltaLakeDataset')]",
-				"[concat(variables('factoryId'), '/datasets/Dynamic_AzureSqlTable1')]",
+				"[concat(variables('factoryId'), '/datasets/Dynamic_AzureSqlTable')]",
 				"[concat(variables('factoryId'), '/datasets/Dynamic_adlsgen2_parquet')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/hrcm_landing_to_bronze_if_condition21')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "If Condition2",
-						"type": "IfCondition",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"expression": {
-								"value": "@equals(pipeline().parameters.loadtype,'Full')",
-								"type": "Expression"
-							},
-							"ifFalseActivities": [
-								{
-									"name": "fetch_logs",
-									"type": "Lookup",
-									"dependsOn": [],
-									"policy": {
-										"timeout": "0.12:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "AzureDatabricksDeltaLakeSource",
-											"query": {
-												"value": "@concat('select coalesce(cast(max(load_date) as date), ''1900-01-01'') as last_fetched_date from `hrcm-data-catalog`.audit.audit_log where data_source = ''', pipeline().parameters.datasource, ''' and table_name = ''', pipeline().parameters.tablename, '''')",
-												"type": "Expression"
-											}
-										},
-										"dataset": {
-											"referenceName": "audit_DeltaLakeDataset1",
-											"type": "DatasetReference",
-											"parameters": {}
-										},
-										"firstRowOnly": true
-									}
-								},
-								{
-									"name": "incremental",
-									"type": "Copy",
-									"dependsOn": [
-										{
-											"activity": "fetch_logs",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "0.12:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "AzureSqlSource",
-											"sqlReaderQuery": {
-												"value": "@concat('select *,''',pipeline().parameters.datasource,''' as datasource from ',pipeline().parameters.tablename,' where ',pipeline().parameters.watermark,' >= ''',activity('fetch_logs').output.firstRow.last_fetched_date,'''')",
-												"type": "Expression"
-											},
-											"queryTimeout": "02:00:00",
-											"partitionOption": "None"
-										},
-										"sink": {
-											"type": "ParquetSink",
-											"storeSettings": {
-												"type": "AzureBlobFSWriteSettings"
-											},
-											"formatSettings": {
-												"type": "ParquetWriteSettings"
-											}
-										},
-										"enableStaging": false,
-										"translator": {
-											"type": "TabularTranslator",
-											"typeConversion": true,
-											"typeConversionSettings": {
-												"allowDataTruncation": true,
-												"treatBooleanAsNumber": false
-											}
-										}
-									},
-									"inputs": [
-										{
-											"referenceName": "Dynamic_AzureSqlTable2",
-											"type": "DatasetReference",
-											"parameters": {
-												"db_name": {
-													"value": "@pipeline().parameters.database",
-													"type": "Expression"
-												},
-												"schema": {
-													"value": "@split(pipeline().parameters.tablename,'.')[0]",
-													"type": "Expression"
-												},
-												"table": {
-													"value": "@split(pipeline().parameters.tablename,'.')[1]",
-													"type": "Expression"
-												}
-											}
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "Dynamic_adlsgen2_parquet1",
-											"type": "DatasetReference",
-											"parameters": {
-												"root": "bronze",
-												"subroot": {
-													"value": "@split(pipeline().parameters.targetpath,'.')[0]",
-													"type": "Expression"
-												},
-												"file": {
-													"value": "@split(pipeline().parameters.tablename,'.')[1]",
-													"type": "Expression"
-												}
-											}
-										}
-									]
-								},
-								{
-									"name": "insert_incremental_logs",
-									"type": "Lookup",
-									"dependsOn": [
-										{
-											"activity": "incremental",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "0.12:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "AzureDatabricksDeltaLakeSource",
-											"query": {
-												"value": "@concat('insert into `hrcm-data-catalog`.audit.audit_log(data_source,table_name,numberofrowscopied,watermarkcolumnname,load_date) values(''',pipeline().parameters.datasource,''',''',pipeline().parameters.tablename,''',''',activity('incremental').output.rowscopied,''',''',pipeline().parameters.watermark,''',''',utcNow(),''')')",
-												"type": "Expression"
-											}
-										},
-										"dataset": {
-											"referenceName": "audit_DeltaLakeDataset1",
-											"type": "DatasetReference",
-											"parameters": {}
-										}
-									}
-								}
-							],
-							"ifTrueActivities": [
-								{
-									"name": "Full_load",
-									"type": "Copy",
-									"dependsOn": [],
-									"policy": {
-										"timeout": "0.12:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "AzureSqlSource",
-											"sqlReaderQuery": {
-												"value": "@concat('select *,''',pipeline().parameters.datasource,''' as datasource from ',pipeline().parameters.tablename)",
-												"type": "Expression"
-											},
-											"queryTimeout": "02:00:00",
-											"partitionOption": "None"
-										},
-										"sink": {
-											"type": "ParquetSink",
-											"storeSettings": {
-												"type": "AzureBlobFSWriteSettings"
-											},
-											"formatSettings": {
-												"type": "ParquetWriteSettings"
-											}
-										},
-										"enableStaging": false,
-										"translator": {
-											"type": "TabularTranslator",
-											"typeConversion": true,
-											"typeConversionSettings": {
-												"allowDataTruncation": true,
-												"treatBooleanAsNumber": false
-											}
-										}
-									},
-									"inputs": [
-										{
-											"referenceName": "Dynamic_AzureSqlTable2",
-											"type": "DatasetReference",
-											"parameters": {
-												"db_name": {
-													"value": "@pipeline().parameters.database",
-													"type": "Expression"
-												},
-												"schema": {
-													"value": "@split(pipeline().parameters.tablename,'.')[0]",
-													"type": "Expression"
-												},
-												"table": {
-													"value": "@split(pipeline().parameters.tablename,'.')[1]",
-													"type": "Expression"
-												}
-											}
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "Dynamic_adlsgen2_parquet1",
-											"type": "DatasetReference",
-											"parameters": {
-												"root": "bronze",
-												"subroot": {
-													"value": "@pipeline().parameters.targetpath",
-													"type": "Expression"
-												},
-												"file": {
-													"value": "@split(pipeline().parameters.tablename,'.')[1]",
-													"type": "Expression"
-												}
-											}
-										}
-									]
-								},
-								{
-									"name": "entry_in_audit",
-									"type": "Lookup",
-									"dependsOn": [
-										{
-											"activity": "Full_load",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "0.12:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "AzureDatabricksDeltaLakeSource",
-											"query": {
-												"value": "@concat('insert into `hrcm-data-catalog`.audit.audit_log(data_source,table_name,numberofrowscopied,watermarkcolumnname,load_date) values(''',pipeline().parameters.datasource,''',''',pipeline().parameters.tablename,''',''',activity('Full_load').output.rowscopied,''',''',pipeline().parameters.watermark,''',''',utcNow(),''')')",
-												"type": "Expression"
-											}
-										},
-										"dataset": {
-											"referenceName": "audit_DeltaLakeDataset1",
-											"type": "DatasetReference",
-											"parameters": {}
-										},
-										"firstRowOnly": false
-									}
-								}
-							]
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"parameters": {
-					"loadtype": {
-						"type": "string"
-					},
-					"database": {
-						"type": "string"
-					},
-					"tablename": {
-						"type": "string"
-					},
-					"datasource": {
-						"type": "string"
-					},
-					"targetpath": {
-						"type": "string"
-					},
-					"watermark": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"lastPublishTime": "2025-02-27T10:53:45Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/audit_DeltaLakeDataset1')]",
-				"[concat(variables('factoryId'), '/datasets/Dynamic_AzureSqlTable2')]",
-				"[concat(variables('factoryId'), '/datasets/Dynamic_adlsgen2_parquet1')]"
 			]
 		},
 		{
@@ -1372,7 +658,7 @@
 								}
 							},
 							"dataset": {
-								"referenceName": "Dynamic_adlsgen2_datasets1",
+								"referenceName": "Dynamic_adlsgen2_datasets",
 								"type": "DatasetReference",
 								"parameters": {
 									"root": "configs",
@@ -1417,7 +703,7 @@
 									"userProperties": [],
 									"typeProperties": {
 										"dataset": {
-											"referenceName": "Dynamic_adlsgen2_parquet1",
+											"referenceName": "Dynamic_adlsgen2_parquet",
 											"type": "DatasetReference",
 											"parameters": {
 												"root": "bronze",
@@ -1509,7 +795,7 @@
 												},
 												"inputs": [
 													{
-														"referenceName": "Dynamic_adlsgen2_parquet1",
+														"referenceName": "Dynamic_adlsgen2_parquet",
 														"type": "DatasetReference",
 														"parameters": {
 															"root": "bronze",
@@ -1526,7 +812,7 @@
 												],
 												"outputs": [
 													{
-														"referenceName": "Dynamic_adlsgen2_parquet1",
+														"referenceName": "Dynamic_adlsgen2_parquet",
 														"type": "DatasetReference",
 														"parameters": {
 															"root": "bronze",
@@ -1586,7 +872,7 @@
 														}
 													},
 													"dataset": {
-														"referenceName": "audit_DeltaLakeDataset1",
+														"referenceName": "audit_DeltaLakeDataset",
 														"type": "DatasetReference",
 														"parameters": {}
 													},
@@ -1643,7 +929,7 @@
 												},
 												"inputs": [
 													{
-														"referenceName": "Dynamic_AzureSqlTable2",
+														"referenceName": "Dynamic_AzureSqlTable",
 														"type": "DatasetReference",
 														"parameters": {
 															"db_name": {
@@ -1663,7 +949,7 @@
 												],
 												"outputs": [
 													{
-														"referenceName": "Dynamic_adlsgen2_parquet1",
+														"referenceName": "Dynamic_adlsgen2_parquet",
 														"type": "DatasetReference",
 														"parameters": {
 															"root": "bronze",
@@ -1707,7 +993,7 @@
 														}
 													},
 													"dataset": {
-														"referenceName": "audit_DeltaLakeDataset1",
+														"referenceName": "audit_DeltaLakeDataset",
 														"type": "DatasetReference",
 														"parameters": {}
 													}
@@ -1758,7 +1044,7 @@
 												},
 												"inputs": [
 													{
-														"referenceName": "Dynamic_AzureSqlTable2",
+														"referenceName": "Dynamic_AzureSqlTable",
 														"type": "DatasetReference",
 														"parameters": {
 															"db_name": {
@@ -1778,7 +1064,7 @@
 												],
 												"outputs": [
 													{
-														"referenceName": "Dynamic_adlsgen2_parquet1",
+														"referenceName": "Dynamic_adlsgen2_parquet",
 														"type": "DatasetReference",
 														"parameters": {
 															"root": "bronze",
@@ -1822,7 +1108,7 @@
 														}
 													},
 													"dataset": {
-														"referenceName": "audit_DeltaLakeDataset1",
+														"referenceName": "audit_DeltaLakeDataset",
 														"type": "DatasetReference",
 														"parameters": {}
 													},
@@ -1860,7 +1146,7 @@
 												"userProperties": [],
 												"typeProperties": {
 													"pipeline": {
-														"referenceName": "hrcm_landing_to_bronze_if_condition21",
+														"referenceName": "hrcm_landing_to_bronze_if_condition2",
 														"type": "PipelineReference"
 													},
 													"waitOnCompletion": true,
@@ -1906,11 +1192,11 @@
 				"lastPublishTime": "2025-02-27T10:53:45Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/Dynamic_adlsgen2_datasets1')]",
-				"[concat(variables('factoryId'), '/datasets/Dynamic_adlsgen2_parquet1')]",
-				"[concat(variables('factoryId'), '/datasets/audit_DeltaLakeDataset1')]",
-				"[concat(variables('factoryId'), '/datasets/Dynamic_AzureSqlTable2')]",
-				"[concat(variables('factoryId'), '/pipelines/hrcm_landing_to_bronze_if_condition21')]"
+				"[concat(variables('factoryId'), '/datasets/Dynamic_adlsgen2_datasets')]",
+				"[concat(variables('factoryId'), '/datasets/Dynamic_adlsgen2_parquet')]",
+				"[concat(variables('factoryId'), '/datasets/audit_DeltaLakeDataset')]",
+				"[concat(variables('factoryId'), '/datasets/Dynamic_AzureSqlTable')]",
+				"[concat(variables('factoryId'), '/pipelines/hrcm_landing_to_bronze_if_condition2')]"
 			]
 		}
 	]
