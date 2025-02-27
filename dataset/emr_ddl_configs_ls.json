@@ -1,0 +1,40 @@
+{
+	"name": "emr_ddl_configs_ls",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "hrcm_AzureDataLakeStorage_ls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "emr_ddl_configs.txt",
+				"fileSystem": "configs"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "root",
+				"type": "String"
+			},
+			{
+				"name": "subroot",
+				"type": "String"
+			},
+			{
+				"name": "filename",
+				"type": "String"
+			},
+			{
+				"name": "db_name",
+				"type": "String"
+			}
+		]
+	}
+}
