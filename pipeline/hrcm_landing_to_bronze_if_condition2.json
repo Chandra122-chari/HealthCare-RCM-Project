@@ -33,10 +33,6 @@
 										"type": "Expression"
 									}
 								},
-								"dataset": {
-									"referenceName": "audit_DeltaLakeDataset1",
-									"type": "DatasetReference"
-								},
 								"firstRowOnly": true
 							}
 						},
@@ -107,10 +103,6 @@
 										"value": "@concat('insert into `hrcm-data-catalog`.audit.audit_log(data_source,table_name,numberofrowscopied,watermarkcolumnname,load_date) values(''',pipeline().parameters.datasource,''',''',pipeline().parameters.tablename,''',''',activity('incremental').output.rowscopied,''',''',pipeline().parameters.watermark,''',''',utcNow(),''')')",
 										"type": "Expression"
 									}
-								},
-								"dataset": {
-									"referenceName": "audit_DeltaLakeDataset1",
-									"type": "DatasetReference"
 								}
 							}
 						}
@@ -176,10 +168,6 @@
 										"value": "@concat('insert into `hrcm-data-catalog`.audit.audit_log(data_source,table_name,numberofrowscopied,watermarkcolumnname,load_date) values(''',pipeline().parameters.datasource,''',''',pipeline().parameters.tablename,''',''',activity('Full_load').output.rowscopied,''',''',pipeline().parameters.watermark,''',''',utcNow(),''')')",
 										"type": "Expression"
 									}
-								},
-								"dataset": {
-									"referenceName": "audit_DeltaLakeDataset1",
-									"type": "DatasetReference"
 								},
 								"firstRowOnly": false
 							}

@@ -178,10 +178,6 @@
 													"type": "Expression"
 												}
 											},
-											"dataset": {
-												"referenceName": "audit_DeltaLakeDataset1",
-												"type": "DatasetReference"
-											},
 											"firstRowOnly": true
 										}
 									},
@@ -252,10 +248,6 @@
 													"value": "@concat('insert into audit.load_logs(data_source,tablename,numberofrowscopied,watermarkcolumnname,loaddate) values(''',item().datasource,''',''',item().tablename,''',''',activity('incremental').output.rowscopied,''',''',item().watermark,''',''',utcNow(),''')')",
 													"type": "Expression"
 												}
-											},
-											"dataset": {
-												"referenceName": "audit_DeltaLakeDataset1",
-												"type": "DatasetReference"
 											}
 										}
 									}
@@ -321,10 +313,6 @@
 													"value": "@concat('insert into audit.load_logs(data_source,tablename,numberofrowscopied,watermarkcolumnname,loaddate) values(''',item().datasource,''',''',item().tablename,''',''',activity('Full_load').output.rowscopied,''',''',item().watermark,''',''',utcNow(),''')')",
 													"type": "Expression"
 												}
-											},
-											"dataset": {
-												"referenceName": "audit_DeltaLakeDataset1",
-												"type": "DatasetReference"
 											},
 											"firstRowOnly": false
 										}
