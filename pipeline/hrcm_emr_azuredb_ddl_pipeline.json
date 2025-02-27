@@ -80,21 +80,10 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "Dynamic_AzureSqlTable1",
+									"referenceName": "Dynamic_AzureSqlTable",
 									"type": "DatasetReference",
 									"parameters": {
-										"db_name": {
-											"value": "@item().db_name",
-											"type": "Expression"
-										},
-										"schema": {
-											"value": "dbo",
-											"type": "Expression"
-										},
-										"table": {
-											"value": "@item().filename",
-											"type": "Expression"
-										}
+										"db_name": "@i"
 									}
 								}
 							]
