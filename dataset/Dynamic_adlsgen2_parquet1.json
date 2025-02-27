@@ -1,0 +1,41 @@
+{
+	"name": "Dynamic_adlsgen2_parquet1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "hrcm_AzureDataLakeStorage_ls",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"root": {
+				"type": "string"
+			},
+			"subroot": {
+				"type": "string"
+			},
+			"file": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().file",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().subroot",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().root",
+					"type": "Expression"
+				}
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

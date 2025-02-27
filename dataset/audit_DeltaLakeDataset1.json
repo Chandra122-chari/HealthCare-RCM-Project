@@ -1,0 +1,12 @@
+{
+	"name": "audit_DeltaLakeDataset1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "hrcm_AzureDatabricksDeltaLake_ls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureDatabricksDeltaLakeDataset",
+		"schema": []
+	}
+}
