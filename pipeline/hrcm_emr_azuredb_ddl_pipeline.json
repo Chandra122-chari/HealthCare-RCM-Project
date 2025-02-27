@@ -61,7 +61,21 @@
 							"inputs": [
 								{
 									"referenceName": "Dynamic_adlsgen2_datasets",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"root": {
+											"value": "@item().root",
+											"type": "Expression"
+										},
+										"subroot": {
+											"value": "@item().subroot",
+											"type": "Expression"
+										},
+										"filename": {
+											"value": "@concat(item().filename,'.csv')",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
