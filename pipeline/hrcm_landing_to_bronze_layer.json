@@ -27,13 +27,8 @@
 						}
 					},
 					"dataset": {
-						"referenceName": "Dynamic_adlsgen2_datasets1",
-						"type": "DatasetReference",
-						"parameters": {
-							"root": "configs",
-							"subroot": "emr",
-							"filename": "load_config.csv"
-						}
+						"referenceName": "Dynamic_adlsgen2_datasets",
+						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
 				}
@@ -71,21 +66,6 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"dataset": {
-									"referenceName": "Dynamic_adlsgen2_parquet1",
-									"type": "DatasetReference",
-									"parameters": {
-										"root": "bronze",
-										"subroot": {
-											"value": "@item().targetpath",
-											"type": "Expression"
-										},
-										"file": {
-											"value": "@split(item().tablename,'.')[1]",
-											"type": "Expression"
-										}
-									}
-								},
 								"fieldList": [
 									"exists"
 								],
@@ -152,50 +132,8 @@
 													"type": "ParquetWriteSettings"
 												}
 											},
-											"enableStaging": false,
-											"translator": {
-												"type": "TabularTranslator",
-												"typeConversion": true,
-												"typeConversionSettings": {
-													"allowDataTruncation": true,
-													"treatBooleanAsNumber": false
-												}
-											}
-										},
-										"inputs": [
-											{
-												"referenceName": "Dynamic_adlsgen2_parquet1",
-												"type": "DatasetReference",
-												"parameters": {
-													"root": "bronze",
-													"subroot": {
-														"value": "@item().targetpath",
-														"type": "Expression"
-													},
-													"file": {
-														"value": "@split(item().tablename,'.')[1]",
-														"type": "Expression"
-													}
-												}
-											}
-										],
-										"outputs": [
-											{
-												"referenceName": "Dynamic_adlsgen2_parquet1",
-												"type": "DatasetReference",
-												"parameters": {
-													"root": "bronze",
-													"subroot": {
-														"value": "@concat(item().targetpath,'/archive/',formatDateTime(utcNow(),'yyyy'),'/',formatDateTime(utcNow(),'%M'),'/',formatDateTime(utcNow(),'%d'))",
-														"type": "Expression"
-													},
-													"file": {
-														"value": "@split(item().tablename,'.')[1]",
-														"type": "Expression"
-													}
-												}
-											}
-										]
+											"enableStaging": false
+										}
 									}
 								]
 							}
@@ -285,53 +223,8 @@
 													"type": "ParquetWriteSettings"
 												}
 											},
-											"enableStaging": false,
-											"translator": {
-												"type": "TabularTranslator",
-												"typeConversion": true,
-												"typeConversionSettings": {
-													"allowDataTruncation": true,
-													"treatBooleanAsNumber": false
-												}
-											}
-										},
-										"inputs": [
-											{
-												"referenceName": "Dynamic_AzureSqlTable2",
-												"type": "DatasetReference",
-												"parameters": {
-													"db_name": {
-														"value": "@item().database",
-														"type": "Expression"
-													},
-													"schema": {
-														"value": "@split(item().tablename,'.')[0]",
-														"type": "Expression"
-													},
-													"table": {
-														"value": "@split(item().tablename,'.')[1]",
-														"type": "Expression"
-													}
-												}
-											}
-										],
-										"outputs": [
-											{
-												"referenceName": "Dynamic_adlsgen2_parquet1",
-												"type": "DatasetReference",
-												"parameters": {
-													"root": "bronze",
-													"subroot": {
-														"value": "@item().targetpath",
-														"type": "Expression"
-													},
-													"file": {
-														"value": "@split(item().tablename,'.')[1]",
-														"type": "Expression"
-													}
-												}
-											}
-										]
+											"enableStaging": false
+										}
 									},
 									{
 										"name": "insert_incremental_logs",
@@ -399,53 +292,8 @@
 													"type": "ParquetWriteSettings"
 												}
 											},
-											"enableStaging": false,
-											"translator": {
-												"type": "TabularTranslator",
-												"typeConversion": true,
-												"typeConversionSettings": {
-													"allowDataTruncation": true,
-													"treatBooleanAsNumber": false
-												}
-											}
-										},
-										"inputs": [
-											{
-												"referenceName": "Dynamic_AzureSqlTable2",
-												"type": "DatasetReference",
-												"parameters": {
-													"db_name": {
-														"value": "@item().database",
-														"type": "Expression"
-													},
-													"schema": {
-														"value": "@split(item().tablename,'.')[0]",
-														"type": "Expression"
-													},
-													"table": {
-														"value": "@split(item().tablename,'.')[1]",
-														"type": "Expression"
-													}
-												}
-											}
-										],
-										"outputs": [
-											{
-												"referenceName": "Dynamic_adlsgen2_parquet1",
-												"type": "DatasetReference",
-												"parameters": {
-													"root": "bronze",
-													"subroot": {
-														"value": "@item().targetpath",
-														"type": "Expression"
-													},
-													"file": {
-														"value": "@split(item().tablename,'.')[1]",
-														"type": "Expression"
-													}
-												}
-											}
-										]
+											"enableStaging": false
+										}
 									},
 									{
 										"name": "entry_in_audit",
