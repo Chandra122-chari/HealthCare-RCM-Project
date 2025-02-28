@@ -1,5 +1,5 @@
 {
-	"name": "hrcm_landing_to_bronze_layer",
+	"name": "pl_hrcm_landing_to_bronze_layer",
 	"properties": {
 		"activities": [
 			{
@@ -512,7 +512,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"pipeline": {
-												"referenceName": "hrcm_landing_to_bronze_if_condition2",
+												"referenceName": "pl_hrcm_landing_to_bronze_if_condition2",
 												"type": "PipelineReference"
 											},
 											"waitOnCompletion": true,
