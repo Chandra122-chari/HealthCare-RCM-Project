@@ -61,6 +61,9 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/4. Silver/Departments_F"
+				},
 				"linkedServiceName": {
 					"referenceName": "hrcm_AzureDatabricks_ls",
 					"type": "LinkedServiceReference"
