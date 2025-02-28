@@ -192,10 +192,30 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/4. Silver/ICD codes"
+				},
+				"linkedServiceName": {
+					"referenceName": "hrcm_AzureDatabricks_ls",
+					"type": "LinkedServiceReference"
+				}
 			},
 			{
 				"name": "Notebook12",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
+			},
+			{
+				"name": "silver_Notebook",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
