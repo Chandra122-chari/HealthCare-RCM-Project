@@ -361,7 +361,14 @@
 			{
 				"name": "silver_claims_Notebook",
 				"type": "DatabricksNotebook",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "bronze_claims_Notebook",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 2,
@@ -370,6 +377,9 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/4. Silver/Claims"
+				},
 				"linkedServiceName": {
 					"referenceName": "hrcm_AzureDatabricks_ls",
 					"type": "LinkedServiceReference"
@@ -396,7 +406,7 @@
 				}
 			},
 			{
-				"name": "Notebook4",
+				"name": "silver_encounters_Notebook4",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
