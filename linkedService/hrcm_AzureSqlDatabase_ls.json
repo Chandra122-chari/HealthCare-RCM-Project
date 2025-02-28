@@ -3,7 +3,8 @@
 	"properties": {
 		"parameters": {
 			"db_name": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "hrcm-hosa"
 			}
 		},
 		"annotations": [],
