@@ -332,7 +332,446 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/hrcm_landing_to_bronze_if_condition2')]",
+			"name": "[concat(parameters('factoryName'), '/pl_hrcm_silver_to_gold')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "silver_transaction_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/4. Silver/Transactions"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "gold_transaction_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "silver_transaction_Notebook",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/5. Gold/fact_transactions"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "silver_departments_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/4. Silver/Departments_F"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "gold_departments_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "silver_departments_Notebook",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/5. Gold/dim_departments"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "silver_patient_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/4. Silver/Patients"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "gold_patient_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "silver_patient_Notebook",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/5. Gold/dim_patients"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "silver_providers_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/4. Silver/Providers_F"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "gold_providers_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "silver_providers_Notebook",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/5. Gold/dim_providers"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "silver_cpt_codes_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "bronze_cptcodes_Notebook",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/4. Silver/CPT codes"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "gold_cpt_codes_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "silver_cpt_codes_Notebook",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/5. Gold/dim_cptcodes"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "silver_icd_codes_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/4. Silver/ICD codes"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "gold_icd_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "silver_icd_codes_Notebook",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/5. Gold/dim_icd_codes"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "silver_npi_codes_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/4. Silver/NPI"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "gold_npi_codes_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "silver_npi_codes_Notebook",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/5. Gold/dim_npi_codes"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "bronze_claims_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/3. Bronze/claims_data"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "silver_claims_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "bronze_claims_Notebook",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/4. Silver/Claims"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "bronze_cptcodes_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/3. Bronze/cpt_codes"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "silver_encounters_Notebook",
+						"type": "DatabricksNotebook",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/4. Silver/Encounters"
+						},
+						"linkedServiceName": {
+							"referenceName": "hrcm_AzureDatabricks_ls",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/hrcm_AzureDatabricks_ls')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_hrcm_landing_to_bronze_if_condition2')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -354,7 +793,7 @@
 									"dependsOn": [],
 									"policy": {
 										"timeout": "0.12:00:00",
-										"retry": 0,
+										"retry": 2,
 										"retryIntervalInSeconds": 30,
 										"secureOutput": false,
 										"secureInput": false
@@ -389,7 +828,7 @@
 									],
 									"policy": {
 										"timeout": "0.12:00:00",
-										"retry": 0,
+										"retry": 2,
 										"retryIntervalInSeconds": 30,
 										"secureOutput": false,
 										"secureInput": false
@@ -475,7 +914,7 @@
 									],
 									"policy": {
 										"timeout": "0.12:00:00",
-										"retry": 0,
+										"retry": 2,
 										"retryIntervalInSeconds": 30,
 										"secureOutput": false,
 										"secureInput": false
@@ -504,7 +943,7 @@
 									"dependsOn": [],
 									"policy": {
 										"timeout": "0.12:00:00",
-										"retry": 0,
+										"retry": 2,
 										"retryIntervalInSeconds": 30,
 										"secureOutput": false,
 										"secureInput": false
@@ -590,7 +1029,7 @@
 									],
 									"policy": {
 										"timeout": "0.12:00:00",
-										"retry": 0,
+										"retry": 2,
 										"retryIntervalInSeconds": 30,
 										"secureOutput": false,
 										"secureInput": false
@@ -649,7 +1088,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/hrcm_landing_to_bronze_layer')]",
+			"name": "[concat(parameters('factoryName'), '/pl_hrcm_landing_to_bronze_layer')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -660,7 +1099,7 @@
 						"dependsOn": [],
 						"policy": {
 							"timeout": "0.12:00:00",
-							"retry": 0,
+							"retry": 2,
 							"retryIntervalInSeconds": 30,
 							"secureOutput": false,
 							"secureInput": false
@@ -716,7 +1155,7 @@
 									"dependsOn": [],
 									"policy": {
 										"timeout": "0.12:00:00",
-										"retry": 0,
+										"retry": 2,
 										"retryIntervalInSeconds": 30,
 										"secureOutput": false,
 										"secureInput": false
@@ -775,7 +1214,7 @@
 												"dependsOn": [],
 												"policy": {
 													"timeout": "0.12:00:00",
-													"retry": 0,
+													"retry": 2,
 													"retryIntervalInSeconds": 30,
 													"secureOutput": false,
 													"secureInput": false
@@ -1167,7 +1606,7 @@
 												"userProperties": [],
 												"typeProperties": {
 													"pipeline": {
-														"referenceName": "hrcm_landing_to_bronze_if_condition2",
+														"referenceName": "pl_hrcm_landing_to_bronze_if_condition2",
 														"type": "PipelineReference"
 													},
 													"waitOnCompletion": true,
@@ -1217,7 +1656,65 @@
 				"[concat(variables('factoryId'), '/datasets/Dynamic_adlsgen2_parquet')]",
 				"[concat(variables('factoryId'), '/datasets/audit_DeltaLakeDataset')]",
 				"[concat(variables('factoryId'), '/datasets/Dynamic_AzureSqlTable')]",
-				"[concat(variables('factoryId'), '/pipelines/hrcm_landing_to_bronze_if_condition2')]"
+				"[concat(variables('factoryId'), '/pipelines/pl_hrcm_landing_to_bronze_if_condition2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_hrcm_end_to_end')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Execute Pipeline1",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"policy": {
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "pl_hrcm_landing_to_bronze_layer",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "Execute Pipeline2",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "Execute Pipeline1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "pl_hrcm_silver_to_gold",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_hrcm_landing_to_bronze_layer')]",
+				"[concat(variables('factoryId'), '/pipelines/pl_hrcm_silver_to_gold')]"
 			]
 		}
 	]
