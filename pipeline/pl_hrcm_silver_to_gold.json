@@ -149,7 +149,7 @@
 				"userProperties": []
 			},
 			{
-				"name": "silver_Notebook9",
+				"name": "silver_cpt_codes_Notebook",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
@@ -159,7 +159,14 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/4. Silver/CPT codes"
+				},
+				"linkedServiceName": {
+					"referenceName": "hrcm_AzureDatabricks_ls",
+					"type": "LinkedServiceReference"
+				}
 			},
 			{
 				"name": "Notebook10",
@@ -175,7 +182,7 @@
 				"userProperties": []
 			},
 			{
-				"name": "Notebook11",
+				"name": "silver_icd_codes_Notebook",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
