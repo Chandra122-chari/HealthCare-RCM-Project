@@ -193,7 +193,14 @@
 			{
 				"name": "silver_cpt_codes_Notebook",
 				"type": "DatabricksNotebook",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "bronze_cptcodes_Notebook",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 2,
@@ -380,6 +387,9 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/3. Bronze/cpt_codes"
+				},
 				"linkedServiceName": {
 					"referenceName": "hrcm_AzureDatabricks_ls",
 					"type": "LinkedServiceReference"
