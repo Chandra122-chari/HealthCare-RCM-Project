@@ -50,7 +50,7 @@
 				}
 			},
 			{
-				"name": "Notebook3",
+				"name": "silver_departments_Notebook",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
@@ -60,7 +60,11 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "hrcm_AzureDatabricks_ls",
+					"type": "LinkedServiceReference"
+				}
 			},
 			{
 				"name": "Notebook4",
