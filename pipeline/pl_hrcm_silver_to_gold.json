@@ -230,7 +230,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/5. Gold/dim_icd_codes"
+					"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/5. Gold/dim_cptcodes"
 				},
 				"linkedServiceName": {
 					"referenceName": "hrcm_AzureDatabricks_ls",
