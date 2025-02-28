@@ -8,11 +8,11 @@
 		"hrcm_AzureDataLakeStorage_ls_properties_typeProperties_url": {
 			"value": "https://hrcmproject.dfs.core.windows.net/"
 		},
-		"hrcm_AzureKeyVault_ls_properties_typeProperties_baseUrl": {
-			"value": "https://hrcm-keyvlt.vault.azure.net/"
-		},
 		"hrcm_AzureDatabricks_ls_properties_typeProperties_existingClusterId": {
 			"value": "0224-074321-1cui8ejt"
+		},
+		"hrcm_AzureKeyVault_ls_properties_typeProperties_baseUrl": {
+			"value": "https://hrcm-keyvlt.vault.azure.net/"
 		},
 		"hrcm_AzureSqlDatabase_ls_properties_typeProperties_server": {
 			"value": "hrcmsqlserver.database.windows.net"
