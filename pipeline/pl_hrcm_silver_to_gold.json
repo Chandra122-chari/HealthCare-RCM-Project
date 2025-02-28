@@ -116,7 +116,7 @@
 				"userProperties": []
 			},
 			{
-				"name": "Notebook7",
+				"name": "silver_providers_Notebook",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
@@ -126,7 +126,14 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/4. Silver/Providers_F"
+				},
+				"linkedServiceName": {
+					"referenceName": "hrcm_AzureDatabricks_ls",
+					"type": "LinkedServiceReference"
+				}
 			},
 			{
 				"name": "Notebook8",
@@ -142,7 +149,7 @@
 				"userProperties": []
 			},
 			{
-				"name": "Notebook9",
+				"name": "silver_Notebook9",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
