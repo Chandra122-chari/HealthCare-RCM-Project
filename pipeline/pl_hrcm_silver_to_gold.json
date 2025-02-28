@@ -211,7 +211,7 @@
 				}
 			},
 			{
-				"name": "Notebook10",
+				"name": "gold_cpt_codes_Notebook",
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
@@ -228,7 +228,14 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/chandrap@srminfotech122.onmicrosoft.com/HRCM_Project/databricks_files/5. Gold/dim_icd_codes"
+				},
+				"linkedServiceName": {
+					"referenceName": "hrcm_AzureDatabricks_ls",
+					"type": "LinkedServiceReference"
+				}
 			},
 			{
 				"name": "silver_icd_codes_Notebook",
